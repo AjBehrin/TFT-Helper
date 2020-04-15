@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { ChampListBuilder as Builder } from './ChampListBuilder';
+import ChampListBuilder from './ChampListBuilder';
 
 
 
@@ -17,15 +17,16 @@ const ChampIcon = () => {
     }
 
     return (
-        <ul>
+        <>
             { champShow ? 
-            <Builder 
-                champSource={champIcons[0]} 
+            <ChampListBuilder 
+                champSource={champIcons} 
                 champKey={keyCount} 
                 handleClick={handleChampClick} />
                 : null 
             }
-        </ul>
+        </>
+        
     );
 
 }
