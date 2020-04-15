@@ -1,41 +1,33 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import { ChampListBuilder as Builder } from './ChampListBuilder';
 
-const champIcons = ['airicon.png', 'fireicon.png', 'watericon.png', 'earthicon.png'];
 
-let keyCount = 0;
 
-let hide = {
-    hideChamp: ""
-}
+const ChampIcon = () => {
 
-const PickedChamps = (props) => {
+    //Adding state / hooks
+    const [champShow, setChampShow] = useState(true);
 
-}
+    //Local variables
+    const champIcons = ['airicon.png', 'fireicon.png', 'watericon.png', 'earthicon.png'];
+    let keyCount = 0;
 
-const BuildChamps = (props) => {
-    
-    let champArray = [];
-
-    const handleChampClick = () => {
-        hide.hideChamp = "hidden"
+    function handleChampClick() {
+        setChampShow(false);
     }
 
-    for (let i = 0; i < 4; i++) {
-
-        for (let j = 0; j < 10; j++) {
-            champArray.push(<li key={keyCount} style={hide}><img src={`images/${props.champs[i]}`} onClick={handleChampClick} alt="" className="flex-champ" /></li>);
-            keyCount++;
-        }
-    }
-
-    return champArray;
-}
-
-function ChampIcon() {
-       
     return (
-        <BuildChamps champs={champIcons} />
+        <ul>
+            { champShow ? 
+            <Builder 
+                champSource={champIcons[0]} 
+                champKey={keyCount} 
+                handleClick={handleChampClick} />
+                : null 
+            }
+        </ul>
     );
+
 }
 
 export default ChampIcon;
