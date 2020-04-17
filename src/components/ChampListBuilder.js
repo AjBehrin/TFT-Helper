@@ -2,16 +2,20 @@ import React from 'react';
 
 const ChampListBuilder = (props) => {
 
+    const liStyles = {
+        padding: "10px"
+    }
+
     let keyCount = 0;
 
     function loopChamps() {
 
         let champArray = [];
             
-        for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < props.champLength; i++) {
 
             for (let j = 0; j < 10; j++) {
-                champArray.push(<li key={keyCount}><img src={`images/${props.champSource[i]}`} onClick={props.handleChampClick} alt="" className="flex-champ" /></li>);
+                champArray.push(<li key={keyCount} style={liStyles}><img onClick={props.handleChampClick} src={`images/${props.champSource[i]}`} alt="" className="flex-champ" /></li>);
                 keyCount++;
             }
 
@@ -25,13 +29,6 @@ const ChampListBuilder = (props) => {
         loopChamps()
     );
 
-    
-
 }
 
 export default ChampListBuilder;
-
-/* 
-cArray = <li key={keyCount}><img src={`images/${item}`} onClick={props.handleChampClick} alt="" className="flex-champ" /></li>
-                    keyCount++;
-*/

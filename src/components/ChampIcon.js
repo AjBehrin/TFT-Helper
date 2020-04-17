@@ -7,10 +7,11 @@ const ChampIcon = () => {
     const [champShow, setChampShow] = useState(true);
 
     //Local variables
-    const champIcons = ['airicon.png', 'fireicon.png', 'watericon.png', 'earthicon.png'];
+    const champIcons = ['earthicon.png', 'airicon.png', 'fireicon.png', 'watericon.png'];
     let keyCount = 0;
 
-    function handleChampClick() {
+    function handleChampClick(e) {
+        e.preventDefault();
         setChampShow(false);
     }
 
@@ -20,11 +21,17 @@ const ChampIcon = () => {
             <ChampListBuilder 
                 champSource={champIcons} 
                 champKey={keyCount} 
-                handleClick={handleChampClick} />
+                handleClick={handleChampClick} 
+                champLength={champIcons.length} />
                 : null 
             }
+            <button onClick={() => setChampShow(false)}>
+                Bye
+            </button>
+            <button onClick={() => setChampShow(true)}>
+                Hi
+            </button>
         </>
-        
     );
 
 }
